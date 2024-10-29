@@ -81,13 +81,15 @@ def update_plot(num):
 
     # Tank 2
     tank_2.set_data([-radius,radius],[volume_Tank2[num],volume_Tank2[num]])
-    tank_22.set_data([0,0],[-60,volume_Tank2[num]-60])
+    #tank_22.set_data([0,0],[-60,volume_Tank2[num]-60])
+    tank_22.set_height(volume_Tank2[num])
     tnk_2.set_data(t[0:num],volume_Tank2[0:num])
     tnk_2Z.set_data(t[0:num],volume_Tank2[0:num])
 
     # Tank 3
     tank_3.set_data([-radius,radius],[volume_Tank3[num],volume_Tank3[num]])
-    tank_32.set_data([0,0],[-60,volume_Tank3[num]-60])
+    #tank_32.set_data([0,0],[-60,volume_Tank3[num]-60])
+    tank_32.set_height(volume_Tank3[num])
     tnk_3.set_data(t[0:num],volume_Tank3[0:num])
     tnk_3Z.set_data(t[0:num],volume_Tank3[0:num])
 
@@ -105,7 +107,6 @@ tank_1,=ax0.plot([],[],'r',linewidth=4)
 #tank_12,=ax0.plot([],[],'royalblue',linewidth=270,solid_capstyle='butt')
 tank_12=plt.Rectangle([-5,0],10,0,facecolor="royalblue")
 ax0.add_patch(tank_12)
-
 plt.xlim(-radius,radius)
 plt.ylim(volume_i,volume_f)
 plt.xticks(np.arange(-radius,radius+1,radius))
@@ -116,7 +117,9 @@ plt.title('Tank 1')
 # Tank 2
 ax1=fig.add_subplot(gs[0,1],facecolor=(0.9,0.9,0.9))
 tank_2,=ax1.plot([],[],'r',linewidth=4)
-tank_22,=ax1.plot([],[],'royalblue',linewidth=270)
+#tank_22,=ax1.plot([],[],'royalblue',linewidth=270)
+tank_22=plt.Rectangle([-5,0],10,0,facecolor="royalblue")
+ax1.add_patch(tank_22)
 plt.xlim(-radius,radius)
 plt.ylim(volume_i,volume_f)
 plt.xticks(np.arange(-radius,radius+1,radius))
@@ -126,7 +129,9 @@ plt.title('Tank 2')
 # Tank 3
 ax2=fig.add_subplot(gs[0,2],facecolor=(0.9,0.9,0.9))
 tank_3,=ax2.plot([],[],'r',linewidth=4)
-tank_32,=ax2.plot([],[],'royalblue',linewidth=270)
+#tank_32,=ax2.plot([],[],'royalblue',linewidth=270)
+tank_32=plt.Rectangle([-5,0],10,0,facecolor="royalblue")
+ax2.add_patch(tank_32)
 plt.xlim(-radius,radius)
 plt.ylim(volume_i,volume_f)
 plt.xticks(np.arange(-radius,radius+1,radius))
