@@ -72,7 +72,10 @@ dVol=10
 def update_plot(num):
     # Tank 1
     tank_1.set_data([-radius,radius],[volume_Tank1[num],volume_Tank1[num]])
-    tank_12.set_data([0,0],[-60,volume_Tank1[num]-60])
+    #tank_12.set_data([0,0],[0,volume_Tank1[num]])
+    tank_12.set_height(volume_Tank1[num])
+    #tank_12.set_width(num/100)
+
     tnk_1.set_data(t[0:num],volume_Tank1[0:num])
     tnk_1Z.set_data(t[0:num],volume_Tank1[0:num])
 
@@ -99,7 +102,10 @@ gs=gridspec.GridSpec(2,3)
 # Tank 1
 ax0=fig.add_subplot(gs[0,0],facecolor=(0.9,0.9,0.9))
 tank_1,=ax0.plot([],[],'r',linewidth=4)
-tank_12,=ax0.plot([],[],'royalblue',linewidth=270)
+#tank_12,=ax0.plot([],[],'royalblue',linewidth=270,solid_capstyle='butt')
+tank_12=plt.Rectangle([-5,0],10,0,facecolor="royalblue")
+ax0.add_patch(tank_12)
+
 plt.xlim(-radius,radius)
 plt.ylim(volume_i,volume_f)
 plt.xticks(np.arange(-radius,radius+1,radius))
@@ -117,7 +123,7 @@ plt.xticks(np.arange(-radius,radius+1,radius))
 plt.yticks(np.arange(volume_i,volume_f+dVol,dVol))
 plt.title('Tank 2')
 
-# Tank 1
+# Tank 3
 ax2=fig.add_subplot(gs[0,2],facecolor=(0.9,0.9,0.9))
 tank_3,=ax2.plot([],[],'r',linewidth=4)
 tank_32,=ax2.plot([],[],'royalblue',linewidth=270)
