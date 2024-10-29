@@ -70,9 +70,10 @@ volume_f=100 # [m^3]
 dVol=10
 
 def update_plot(num):
+    tank_1.set_data([-radius,radius],[volume_Tank1[num],volume_Tank1[num]])
 
 
-    return
+    return tank_1,
 
 # Set up the figure properties
 fig=plt.figure(figsize=(16,9),dpi=80,facecolor=(0.8,0.8,0.8))
