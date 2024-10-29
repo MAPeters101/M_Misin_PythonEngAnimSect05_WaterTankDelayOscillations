@@ -59,8 +59,55 @@ for i in range(0,len(t)):
     else:
         volume_Tank3[i]=50
 
+############################## ANIMATIONS ##############################
+
+frame_amount=len(t)
+
+# Create the watertanks
+radius=5 # [m]
+volume_i=0 # [m^3]
+volume_f=100 # [m^3]
+dVol=10
+
+def update_plot(num):
 
 
+    return
+
+# Set up the figure properties
+fig=plt.figure(figsize=(16,9),dpi=80,facecolor=(0.8,0.8,0.8))
+gs=gridspec.GridSpec(2,3)
+
+# Tank 1
+ax0=fig.add_subplot(gs[0,0],facecolor=(0.9,0.9,0.9))
+tank_1,=ax0.plot([],[],'r',linewidth=4)
+tank_12,=ax0.plot([],[],'royalblue',linewidth=260)
+plt.xlim(-radius,radius)
+plt.ylim(volume_i,volume_f)
+plt.xticks(np.arange(-radius,radius+1,radius))
+plt.yticks(np.arange(volume_i,volume_f+dVol,dVol))
+plt.ylabel('tank volume [m^3]')
+plt.title('Tank 1')
+
+# Tank 2
+ax1=fig.add_subplot(gs[0,1],facecolor=(0.9,0.9,0.9))
+tank_2,=ax0.plot([],[],'r',linewidth=4)
+tank_22,=ax0.plot([],[],'royalblue',linewidth=260)
+plt.xlim(-radius,radius)
+plt.ylim(volume_i,volume_f)
+plt.xticks(np.arange(-radius,radius+1,radius))
+plt.yticks(np.arange(volume_i,volume_f+dVol,dVol))
+plt.title('Tank 2')
+
+# Tank 1
+ax2=fig.add_subplot(gs[0,0],facecolor=(0.9,0.9,0.9))
+tank_3,=ax0.plot([],[],'r',linewidth=4)
+tank_32,=ax0.plot([],[],'royalblue',linewidth=260)
+plt.xlim(-radius,radius)
+plt.ylim(volume_i,volume_f)
+plt.xticks(np.arange(-radius,radius+1,radius))
+plt.yticks(np.arange(volume_i,volume_f+dVol,dVol))
+plt.title('Tank 3')
 
 
 
