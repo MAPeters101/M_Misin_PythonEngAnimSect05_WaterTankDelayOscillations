@@ -71,9 +71,10 @@ dVol=10
 
 def update_plot(num):
     tank_1.set_data([-radius,radius],[volume_Tank1[num],volume_Tank1[num]])
+    tank_12.set_data([0,0],[-60,volume_Tank1[num]-60])
 
 
-    return tank_1,
+    return tank_12,tank_1,
 
 # Set up the figure properties
 fig=plt.figure(figsize=(16,9),dpi=80,facecolor=(0.8,0.8,0.8))
@@ -82,7 +83,7 @@ gs=gridspec.GridSpec(2,3)
 # Tank 1
 ax0=fig.add_subplot(gs[0,0],facecolor=(0.9,0.9,0.9))
 tank_1,=ax0.plot([],[],'r',linewidth=4)
-tank_12,=ax0.plot([],[],'royalblue',linewidth=260)
+tank_12,=ax0.plot([],[],'royalblue',linewidth=270)
 plt.xlim(-radius,radius)
 plt.ylim(volume_i,volume_f)
 plt.xticks(np.arange(-radius,radius+1,radius))
@@ -124,4 +125,7 @@ plt.ylabel('tank volume [m^3]')
 plt.grid(True)
 plt.legend(loc='upper right',fontsize='small')
 
+
+plane_ani=animation.FuncAnimation(fig,update_plot,
+    frames=frame_amount,interval=20,repeat=False,blit=True)
 plt.show()
