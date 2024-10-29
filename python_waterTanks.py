@@ -43,7 +43,7 @@ for i in range(0,len(t)):
         volume_Tank2[i]=50+3*np.sin(2*np.pi*1*(t[i]-t[temp22]))
         temp23=i
     elif t[i]<=42.5+45**0.5:
-        volume_Tank2[i]=50+np.sin(2*np.pi*1*(t[i]-t[temp23]))
+        volume_Tank2[i]=50+np.sin(2*np.pi*2*(t[i]-t[temp23]))
     else:
         volume_Tank2[i]=50
 
@@ -74,18 +74,23 @@ def update_plot(num):
     tank_1.set_data([-radius,radius],[volume_Tank1[num],volume_Tank1[num]])
     tank_12.set_data([0,0],[-60,volume_Tank1[num]-60])
     tnk_1.set_data(t[0:num],volume_Tank1[0:num])
+    tnk_1Z.set_data(t[0:num],volume_Tank1[0:num])
 
     # Tank 2
     tank_2.set_data([-radius,radius],[volume_Tank2[num],volume_Tank2[num]])
     tank_22.set_data([0,0],[-60,volume_Tank2[num]-60])
     tnk_2.set_data(t[0:num],volume_Tank2[0:num])
+    tnk_2Z.set_data(t[0:num],volume_Tank2[0:num])
 
     # Tank 3
     tank_3.set_data([-radius,radius],[volume_Tank3[num],volume_Tank3[num]])
     tank_32.set_data([0,0],[-60,volume_Tank3[num]-60])
     tnk_3.set_data(t[0:num],volume_Tank3[0:num])
+    tnk_3Z.set_data(t[0:num],volume_Tank3[0:num])
 
-    return tank_12,tank_1,tnk_1,tank_22,tank_2,tnk_2,tank_32,tank_3,tnk_3,
+    return tank_12,tank_1,tnk_1,tank_22,tank_2,tnk_2,tank_32,tank_3,tnk_3,\
+        tnk_1Z,tnk_2Z,tnk_3Z
+
 
 # Set up the figure properties
 fig=plt.figure(figsize=(16,9),dpi=80,facecolor=(0.8,0.8,0.8))
@@ -135,6 +140,17 @@ plt.xlabel('time [s]')
 plt.ylabel('tank volume [m^3]')
 plt.grid(True)
 plt.legend(loc='upper right',fontsize='small')
+
+# Create volume function zoomed
+ax4=fig.add_subplot(gs[1,2],facecolor=(0.9,0.9,0.9))
+tnk_1Z,=ax4.plot([],[],'blue',linewidth=3)
+tnk_2Z,=ax4.plot([],[],'green',linewidth=3)
+tnk_3Z,=ax4.plot([],[],'red',linewidth=3)
+plt.xticks([0,22.5,27.5,32.5,32.5+45**0.5,37.5+45**0.5,42.5+45**0.5,60])
+plt.yticks(np.arange(volume_i,volume_f+1,dVol))
+plt.axis([38,50,47,53])
+plt.xlabel('time [s]')
+plt.grid(True)
 
 
 plane_ani=animation.FuncAnimation(fig,update_plot,
